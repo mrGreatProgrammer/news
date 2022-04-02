@@ -1,0 +1,10 @@
+.home_page {
+  width: 70%;
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+.news {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,77 @@
+.nav_bar {
+  height: 100vh;
+  width: 17%;
+  grid-area: "nav";
+  padding: 10px;
+}
+.nav {
+}
+.nav-li {
+  list-style: none;
+  font-size: 18px;
+  font-weight: 400;
+  color: #aaaaaa;
+  margin: 15px 5px;
+}
+.nav-link {
+  border-radius: 8px;
+  display: block;
+  padding: 15px 20px;
+  color: #777;
+  text-decoration: none;
+  background: #f1f1f1;
+}
+.nav-item {
+  padding-left: 10px;
+}
+.active {
+  color: #353535;
+  background: #fff;
+  box-shadow: 0px 0px 7px 3px #ccc;
+}
+.active .red {
+  position: relative;
+  background: #ee3454;
+  right: -250px;
+  width: 15px;
+  height: 45px;
+  padding: 17px 15px;
+  border-radius: 0px 8px 8px 0px;
+}
+
+.nav_settings:hover .fa-cog {
+  animation: circle 0.7s ease-in-out;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(40deg);
+  }
+  30% {
+    transform: rotate(60deg);
+  }
+  40% {
+    transform: rotate(80deg);
+  }
+  50% {
+    transform: rotate(100deg);
+  }
+  60% {
+    transform: rotate(120deg);
+  }
+  70% {
+    transform: rotate(140deg);
+  }
+  80% {
+    transform: rotate(160deg);
+  }
+  90% {
+    transform: rotate(170deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
