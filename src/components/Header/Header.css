@@ -5,3 +5,7 @@
     align-items: center;
     grid-area: 'header';
 }
+.acc__btn-link{
+    text-decoration: none;
+    color: #252525;
+}

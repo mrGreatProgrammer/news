@@ -11,14 +11,11 @@ const AccountBtn = ({ avatar, firstName, secondName, type }) => {
         <div className="account__btn--name">
           <p className="account__btn--first__name"> 
           {firstName}
-            {/* firstName */}
           </p>
           <p className="account__btn--second__name">{secondName}
-            {/* firstName */}
           </p>
         </div>
         <div className="account__btn--type">{type}
-          type good
         </div>
       </div>
     </div>
