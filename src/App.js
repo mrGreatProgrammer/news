@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
@@ -10,21 +11,35 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Settings from "./pages/Settings/Settings";
 
 function App() {
+  const isAuth = useSelector(state=>state.user.isAuth);
+
+
+
   return (
     <div className="App">
       <Router>
-        <Header />
-        <main>
-          <NavBar />
+        {!isAuth ? (
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="*" element={<ErrNotFound />} />
+            <Route path="/" element={<Signup />} />
+            {/* <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} /> */}
+            <Route path="*" element={<Login />} />
           </Routes>
-        </main>
+        ) : (
+          <>
+            <Header />
+            <main>
+              <NavBar />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<Navigate to="/" replace />}/>
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="*" element={<ErrNotFound />} />
+              </Routes>
+            </main>
+          </>
+        )}
       </Router>
     </div>
   );

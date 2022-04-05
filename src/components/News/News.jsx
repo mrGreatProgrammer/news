@@ -1,31 +1,52 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useFetchAllBlogsQuery } from "../../store/reducers/blogs-slice";
+import { fetchBlogs } from "../../store/reducers/bogs-actions";
 import CardNews from "../CardNews/CardNews";
 import Loader from "../Loader/Loader";
+import ErrMsg from "../ui/ErrMsg/ErrMsg";
 import ScrollerToTop from "../ui/ScrollerToTop/ScrollerToTop";
 import "./News.css";
 
 const News = () => {
-  const [blogs, setBlogs] = useState([]);
-  let res = undefined;
+  const [limit, setLimit] = useState(6);
+  const currentUser = useSelector(state=>state.user.currentUser)
+  const {
+    data: blogs,
+    error,
+    isLoading,
+    refetch,
+  } = useFetchAllBlogsQuery(limit);
 
-  const getBlogs = async () => {
-    res = await axios.get("https://6246c1b4e3450d61b00249a5.mockapi.io/blogs");
-    setBlogs(res.data);
-    console.log(res.data);
-    return res;
-  };
+  useEffect(() => {}, [limit]);
 
-  useEffect(() => {
-    getBlogs();
-  }, [res]);
+  let b = limit;
+  function handleScroll(e) {
+    const bottom =
+      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    if (bottom) {
+      b = b * 2;
+      setLimit(b);
+    }
+  }
 
   return (
-    <div className="news">
-      {!blogs && <Loader />}
-      {blogs.map((n) => (
-        <CardNews key={n.id} img={n.img} title={n.title} txt={n.content} />
-      ))}
+    <div className="news" onScroll={handleScroll}>
+      {error && <ErrMsg txt="Something went wrong" />}
+      {isLoading && <Loader />}
+      {blogs &&
+        blogs.map((n) => (
+          <CardNews
+            currentUserId={currentUser.id}
+            key={n.id}
+            id={n.id}
+            img={n.img}
+            title={n.title}
+            txt={n.content}
+            favorites={n.favorites}
+          />
+        ))}
 
       <ScrollerToTop />
     </div>

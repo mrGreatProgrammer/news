@@ -1,13 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { logOut } from "../../store/reducers/user-slice";
 import "./NavBar.css";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="nav_bar">
       <nav className="nav">
         <li className="nav-li">
-          <NavLink to="/" className="nav-link">
+          <NavLink to="/" className="nav-link nav_main">
             <span className="red"></span>
             <i className="fas fa-globe"></i>
             <span className="nav-item">Discover</span>
@@ -34,6 +38,8 @@ const NavBar = () => {
             <span className="nav-item">Read Later</span>
           </NavLink>
         </li>
+      </nav>
+      <ul>
         <li className="nav-li">
           <NavLink to="/settings" className="nav-link nav_settings">
             <span className="red"></span>
@@ -41,10 +47,11 @@ const NavBar = () => {
             <span className="nav-item">Account Settings</span>
           </NavLink>
         </li>
-        <li className="nav-li">
-          <i className="fas fa-sign-out"></i> <span>Log out</span>
+        <li className="nav-li nav-link log__out--btn " onClick={()=>dispatch(logOut())} >
+          <i class="fas fa-sign-out-alt"></i>
+           <span className="nav-item">Log out</span>
         </li>
-      </nav>
+      </ul>
     </div>
   );
 };

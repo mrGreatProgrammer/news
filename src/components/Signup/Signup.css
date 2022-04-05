@@ -2,7 +2,8 @@
 }
 .btn-block {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
 }
 .enter-btn {
   color: #454545;
@@ -11,6 +12,13 @@
   padding: 15px 20px;
   font-size: 22px;
   box-shadow: 1px 3px 8px 1px #aaa;
+  background: #03fc8c;
+  transition: .4s ease;
+}
+.enter-btn:hover{
+  background: #33b07c;
+  color: #f1f1f1;
+  transition: .4s ease;
 }
 .enter-btn:active {
   box-shadow: inset 3px 5px 5px #aaa;

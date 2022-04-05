@@ -2,10 +2,11 @@ import React from "react";
 import { InlineShareButtons } from "sharethis-reactjs";
 import "./ShareBtns.css";
 
-const ShareBtns = () => {
+const ShareBtns = ({hideModal}) => {
   return (
     <div className="container--glassmorfism">
-      <div className="share__btns--block">
+      <div className="share__btns--block" onClick={(e)=> e.stopPropagation} >
+        <div className="exit--btn" onClick={hideModal} >&#10060;</div>
         <InlineShareButtons
           config={{
             alignment: "center", // alignment of buttons (left, center, right)

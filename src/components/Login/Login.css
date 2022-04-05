@@ -1,0 +1,12 @@
+.enter_msg{
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 30px;
+    color: #282828;
+}
+.login_password-btn{
+    position: relative;
+    top: -58px;
+    left: 300px;
+    color: #353535;
+}

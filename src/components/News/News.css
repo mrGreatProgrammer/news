@@ -7,4 +7,6 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  overflow-y: scroll;
+  height: 100vh;
 }

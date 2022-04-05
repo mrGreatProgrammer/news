@@ -5,7 +5,8 @@
   font-family: "Roboto", sans-serif;
 }
 main{
+  padding: 10px 0px 0px 50px;
 display: flex;
 width: 100%;
-justify-content: space-around;
+justify-content: space-between;
 }

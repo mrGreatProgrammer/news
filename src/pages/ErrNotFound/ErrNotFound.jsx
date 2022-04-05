@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './ErrNotFound.css';
 
 const ErrNotFound = () => {
@@ -7,9 +8,9 @@ const ErrNotFound = () => {
         <div className="enf">
           <h1 className="ernf-message">404</h1>
           <h3 className="ernf-text">This page doesnt exist</h3>
-          <a href="/" className="go-home-page">
+          <NavLink to="/" className="go-home-page">
             home
-          </a>
+          </NavLink>
         </div>
   )
 }
