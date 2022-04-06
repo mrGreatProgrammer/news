@@ -1,6 +1,6 @@
 .nav_bar {
   height: 90vh;
-  width: 17%;
+  width: 300px;
   grid-area: "nav";
   padding: 10px;
   display: flex;
@@ -41,7 +41,8 @@
 .active .red {
   position: relative;
   background: #ee3454;
-  right: -250px;
+  top: -1px;
+  right: -220px;
   width: 15px;
   height: 45px;
   padding: 17px 15px;
@@ -150,5 +151,19 @@
   }
   100% {
     transform: rotateY(360deg);
+  }
+}
+
+@media screen and (max-width: 1010px) {
+  .active .red {
+    right: -210px;
+  }
+}
+@media screen and (max-width: 770px) { 
+  .nav_bar {
+    width: 250px;
+  }
+  .active .red {
+    right: -160px;
   }
 }

@@ -7,7 +7,8 @@ import Path from '../ui/Path/Path';
 import './Header.css'
 
 const Header = () => {
-  const currentUser = useSelector(state=>state.user.currentUser)
+  const currentUser = useSelector(state=>state.user.currentUser);
+
   return (
     <header className="header">
         <Logo /> <Path />
@@ -19,9 +20,3 @@ const Header = () => {
 }
 
 export default Header;
-
-
-// email: "asf@gmail.com"
-// firstName: "asdfd"
-// password: "mypassword11"
-// secondName: "dfa"

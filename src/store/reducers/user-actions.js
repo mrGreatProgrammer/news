@@ -30,7 +30,7 @@ export const signUp = createAsyncThunk(
         return thunkAPI.rejectWithValue("some thind went wrong");
       }
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -70,7 +70,30 @@ export const logIn = createAsyncThunk(
           return thunkAPI.rejectWithValue("Something went wrong");
         }
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+export const chooseRoles = createAsyncThunk('user/roles',
+  async (formData, thunkAPI) => {
+    try {
+      const res = await axios.put(`${baseURL}/users/${formData.id}`, {
+        userType: formData.userType
+      })
+      return res.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+);
+export const sendMeEmail = createAsyncThunk('user/mail', async (formData, thunkAPI)=>{
+  try {
+    const res = await axios.post('http://localhost:4000/api/sendmail', {
+      mail: formData.mail
+    })
+
+    console.log(res);
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message)
+  }
+})

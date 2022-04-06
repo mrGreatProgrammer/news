@@ -1,8 +1,7 @@
 // import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { useFetchAllBlogsQuery } from "../../store/reducers/blogs-slice";
-import { fetchBlogs } from "../../store/reducers/bogs-actions";
 import CardNews from "../CardNews/CardNews";
 import Loader from "../Loader/Loader";
 import ErrMsg from "../ui/ErrMsg/ErrMsg";
@@ -11,7 +10,8 @@ import "./News.css";
 
 const News = () => {
   const [limit, setLimit] = useState(6);
-  const currentUser = useSelector(state=>state.user.currentUser)
+  const newsBlock = useRef();
+  const currentUser = useSelector((state) => state.user.currentUser);
   const {
     data: blogs,
     error,
@@ -21,8 +21,20 @@ const News = () => {
 
   useEffect(() => {}, [limit]);
 
+  let [toTopUpEl, setToTopEl] = useState("isShowBtn_hide");
+
+  function goToTop() {
+    newsBlock.current.scrollTo(0, 0);
+  }
+
   let b = limit;
   function handleScroll(e) {
+    if (e.target.scrollTop > 700) {
+      setToTopEl("isShowBtn");
+    } else if (e.target.scrollTop < 700) {
+      setToTopEl("isShowBtn_hide");
+    }
+
     const bottom =
       e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
     if (bottom) {
@@ -32,7 +44,7 @@ const News = () => {
   }
 
   return (
-    <div className="news" onScroll={handleScroll}>
+    <div className="news" onScroll={handleScroll} ref={newsBlock}>
       {error && <ErrMsg txt="Something went wrong" />}
       {isLoading && <Loader />}
       {blogs &&
@@ -48,7 +60,7 @@ const News = () => {
           />
         ))}
 
-      <ScrollerToTop />
+      <ScrollerToTop toTopUpElem={toTopUpEl} goToTop={goToTop} />
     </div>
   );
 };

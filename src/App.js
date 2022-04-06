@@ -14,16 +14,14 @@ import Settings from "./pages/Settings/Settings";
 function App() {
   const isAuth = useSelector(state=>state.user.isAuth);
 
-
-
   return (
     <div className="App">
       <Router>
         {!isAuth ? (
           <Routes>
             <Route path="/" element={<Signup />} />
-            {/* <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} /> */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="*" element={<Login />} />
           </Routes>
         ) : (

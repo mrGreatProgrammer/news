@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signUp, logIn } from "./user-actions";
+import { signUp, logIn, chooseRoles } from "./user-actions";
 
 
 let initialState = {
@@ -29,6 +29,7 @@ export const UserSlice = createSlice({
       state.isLoading = true;
     },
     [signUp.rejected.type]: (state, action) => {
+      state.isLoading = false;
       state.error = action.payload;
     },
     [logIn.fulfilled.type]: (state, action) => {
@@ -41,8 +42,21 @@ export const UserSlice = createSlice({
       state.isLoading = true;
     },
     [logIn.rejected.type]: (state, action) => {
+      state.isLoading = false;
       state.error = action.payload;
     },
+    [chooseRoles.fulfilled.type]: (state, action)=>{
+      state.isLoading =false;
+      state.error = '';
+      state.currentUser = action.payload;
+    },
+    [chooseRoles.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [chooseRoles.rejected.type]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    }
   },
 });
 

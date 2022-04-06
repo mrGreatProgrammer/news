@@ -48,7 +48,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className="nav-li nav-link log__out--btn " onClick={()=>dispatch(logOut())} >
-          <i class="fas fa-sign-out-alt"></i>
+          <i className="fas fa-sign-out-alt"></i>
            <span className="nav-item">Log out</span>
         </li>
       </ul>

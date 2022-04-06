@@ -19,6 +19,24 @@ export const blogsAPI = createApi({
       }),
       providesTags: (result) => ["Blog"],
     }),
+    creatBlog: builder.mutation({
+      query: (data) => ({
+        url: '/blogs',
+        method: 'POST',
+        body: { title: data.title, content: data.txt }
+      }),
+      invalidatesTags: ["Blog"]
+    }),
+    bookmarks: builder.query({
+      query: (data) => ({
+        url: '/blogs',
+        method: 'GET',
+        params: { 
+          favorites: data.id
+        }
+      }),
+      providesTags: (result) => ["Blog"],
+    }),
     addToFavorites: builder.mutation({
       query: (data) => ({
         url: `/blogs/${data.postId}`,
@@ -41,5 +59,7 @@ export const blogsAPI = createApi({
 });
 
 export const { useFetchAllBlogsQuery } = blogsAPI;
+export const {useCreatBlogMutation} = blogsAPI;
+export const  {useBookmarksQuery} = blogsAPI;
 export const { useAddToFavoritesMutation } = blogsAPI;
 export const { useRemoveFromFavoritesMutation } = blogsAPI;

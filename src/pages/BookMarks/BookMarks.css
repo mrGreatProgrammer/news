@@ -1,0 +1,10 @@
+.bookmarks{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.no_books{
+    font-style: 36px;
+}

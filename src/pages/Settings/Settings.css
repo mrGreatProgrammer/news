@@ -1,3 +1,30 @@
 .settings{
     width: 70%;
 }
+.change_btn{
+    border: none;
+    padding: 15px 5px;
+    background: #33dd5a;
+    border-radius: 10px;
+    color: #f1f1f1;
+    font-weight: 500;
+    font-size: 14px;
+}
+.send_email--btn{
+    border: none;
+    padding: 15px 5px;
+    background: #33dd5a;
+    border-radius: 10px;
+    color: #f1f1f1;
+    font-weight: 500;
+    font-size: 14px;
+}
+.create_btn{
+    border: none;
+    padding: 15px 5px;
+    background: #33dd5a;
+    border-radius: 10px;
+    color: #f1f1f1;
+    font-weight: 500;
+    font-size: 14px;
+}

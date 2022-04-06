@@ -4,8 +4,11 @@ import "./Path.css";
 
 const Path = () => {
   const path = useLocation()
-  const pathName = path.pathname.split('/').join('')
+  let pathName = path.pathname.split('/').join('')
 
+  if (pathName=='') {
+    pathName = "discover";
+  }
 
   return (
     <div className="path">

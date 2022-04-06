@@ -10,11 +10,23 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [secondName, setSecondName] = useState("");
+  const [visiblePass, setVisiblePass] = useState(false);
+  const [passType, setPassType] = useState("password");
   const dispatch = useDispatch();
-  const err = useSelector(state=>state.user.error)
-  
-  function onSignUp() {
+  const err = useSelector((state) => state.user.error);
+
+  function onSignUp(e) {
+    e.preventDefault();
     dispatch(signUp({ firstName, secondName, email, password }));
+  }
+
+  function showPass() {
+    setVisiblePass(true);
+    setPassType("text");
+  }
+  function hidePass() {
+    setVisiblePass(false);
+    setPassType("password");
   }
 
   return (
@@ -22,37 +34,46 @@ const Signup = () => {
       <div className="sugnup">
         <h3 className="enter_msg">Sign Up</h3>
         {err && <ErrMsg txt={err} />}
-        <Input
-          placeholder="First name"
-          value={firstName}
-          onChange={setFirstName}
-          inpType="text"
-        />
-        <Input
-          placeholder="Second name"
-          value={secondName}
-          onChange={setSecondName}
-          inpType="text"
-        />
-        <Input
-          placeholder="Email"
-          value={email}
-          onChange={setEmail}
-          inpType="email"
-        />
-        <Input
-          placeholder="Password"
-          value={password}
-          onChange={setPassword}
-          inpType="password"
-        />
-        <i className="fas fa-eye-slash login_password-btn"></i>
-        <div className="btn-block">
-          <a href="/login">Log In</a>
-          <button className="enter-btn" onClick={onSignUp}>
-            Sign up
-          </button>
-        </div>
+        <form onSubmit={onSignUp}>
+          <Input
+            placeholder="First name"
+            value={firstName}
+            onChange={setFirstName}
+            inpType="text"
+          />
+          <Input
+            placeholder="Second name"
+            value={secondName}
+            onChange={setSecondName}
+            inpType="text"
+          />
+          <Input
+            placeholder="Email"
+            value={email}
+            onChange={setEmail}
+            inpType="email"
+          />
+          <Input
+            placeholder="password"
+            value={password}
+            onChange={setPassword}
+            inpType={passType}
+          />
+          {visiblePass ? (
+            <i onClick={hidePass} className="fas fa-eye login_password-btn"></i>
+          ) : (
+            <i
+              onClick={showPass}
+              className="fas fa-eye-slash login_password-btn"
+            ></i>
+          )}
+          <div className="btn-block">
+            <a href="/login">Log In</a>
+            <button type="submit" className="enter-btn">
+              Sign up
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

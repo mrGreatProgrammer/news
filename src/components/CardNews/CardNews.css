@@ -1,10 +1,13 @@
 .card__news {
-  width: 335px;
-  box-shadow: 0px 0px 7px 3px #ccc;
-  border-radius: 20px;
-  margin: 20px;
-  padding-bottom: 10px;
-  color: #333;
+  display: grid;
+    width: 335px;
+    height: 445px;
+    box-shadow: 0px 0px 7px 3px #ccc;
+    border-radius: 20px;
+    margin: 20px;
+    padding-bottom: 10px;
+    color: #333;
+    grid-template-rows: 284px 105px 50px;
 }
 .card__news--image_block {
 }
@@ -15,6 +18,9 @@
 }
 .card__news--content_block {
   padding: 8px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .card__news--title {
   color: #333;
